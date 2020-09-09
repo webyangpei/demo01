@@ -5,11 +5,11 @@ import mongoose from 'mongoose';
 
 import config from "./config";
 
-import router from './api/user';
+import userRouter from "./api/user";
 
 const app = express();
 async function start() {
-    app.use('/api/user', router);
+    app.use('/api/user', userRouter);
     // app.use('/api/test', (req:Request, res: Response, next: NextFunction) => {
     //     // return res.send('hello world!');
     //     return res.json({

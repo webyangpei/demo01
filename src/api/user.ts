@@ -6,11 +6,13 @@ const router = express.Router();
 
 // 获取用户列表
 router.get('/list', (req:Request, res: Response, next: NextFunction) => {
-    console.log(req, '请求数据');
-    // new User(user).save().then((data: any) => {
-    //     return res.json(data);
-    // });
-    // next();
+    const query: { username: string } = {
+       username: ''
+    }
+    query.username = <string>req.query.username;
+    User.find(query).then(data => {
+        return res.json(data);
+    })
 });
 
 // 添加用户 post
@@ -24,7 +26,7 @@ router.post('/add', (req:Request, res: Response, next: NextFunction) => {
     user.age = req.body.age;
     user.status = req.body.status;
     new User(user).save().then((data: any) => {
-        res.json(data);
+        return res.json(data);
     });
     return res.json({
         code: 1,
