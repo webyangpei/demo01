@@ -5,24 +5,21 @@ import mongoose from 'mongoose';
 
 import config from "./config";
 
-import userRouter from "./api/user";
+import user from "./controller/user";
+import layer from './controller/layer'
+import norm from './controller/norm'
 
 const app = express();
 async function start() {
-    app.use('/api/user', userRouter);
-    // app.use('/api/test', (req:Request, res: Response, next: NextFunction) => {
-    //     // return res.send('hello world!');
-    //     return res.json({
-    //         code: 1,
-    //         msg: '测试成功'
-    //     });
-    // });
+    app.use('/api/user', user);
+    app.use('/api/layer', layer);
+    app.use('/api/norm', norm);
     // 监听错误
     app.use('/', (err: Error, req: Request, res: Response, next: NextFunction) => {
-        console.log(res, 2323)
+        throw (err);
         res.sendStatus(500);
     })
-// 链接mongoose
+    // 链接mongoose
     mongoose.connect('mongodb://localhost/ts-node', { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
     db.on('open', () => {

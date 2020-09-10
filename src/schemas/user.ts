@@ -1,7 +1,7 @@
+// 用户表
 import mongoose from 'mongoose';
-const schema = mongoose.Schema;
 
-const UserSchema = new schema({
+const UserSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -11,7 +11,15 @@ const UserSchema = new schema({
         required: false,
         default: 18
     },
+    password: {
+      type: String,
+      required: true
+    },
     status: Number
+},{
+    versionKey: false
 });
 
-export default UserSchema;
+const User = mongoose.model('User', UserSchema, 'users');
+
+export default User;

@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import User from "../models/user";
+import User from "../schemas/user";
 import { userInfo }  from 'user';
 
 const router = express.Router();
@@ -20,19 +20,23 @@ router.post('/add', (req:Request, res: Response, next: NextFunction) => {
     let user:userInfo = {
         username: 'yangpei',
         age: 18,
+        password: '123456',
         status: 1
     };
     user.username = req.body.username;
     user.age = req.body.age;
     user.status = req.body.status;
     new User(user).save().then((data: any) => {
-        return res.json(data);
+        return res.json({
+            code: 1,
+            msg: '添加用户成功',
+            data
+        })
     });
     return res.json({
-        code: 1,
-        msg: '添加用户成功'
+        code: 2,
+        msg: '添加失败',
     })
-    // next();
 });
 // 删除用户 delete
 

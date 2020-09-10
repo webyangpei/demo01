@@ -1,7 +1,7 @@
 import { config } from 'config';
 
 const config:config = {
-  port: 3001
+  port: 9000
 };
 
 export default config;
