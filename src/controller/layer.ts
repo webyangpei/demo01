@@ -18,7 +18,10 @@ const jsonParser = bodyParser.json()
 // 获取商家自定义分层
 router.get('/list', (req: Request, res: Response, next: NextFunction) => {
     Layer.find().then((data: any) => {
-        return res.json(data);
+        return res.json({result: 1,
+            error_msg: '查询成功',
+            data
+        });
     })
 });
 

@@ -8,12 +8,14 @@ import config from "./config";
 import user from "./controller/user";
 import layer from './controller/layer'
 import norm from './controller/norm'
+import shop from './controller/shop'
 
 const app = express();
 async function start() {
     app.use('/api/user', user);
     app.use('/api/layer', layer);
     app.use('/api/norm', norm);
+    app.use('/api/shop', shop);
     // 监听错误
     app.use('/', (err: Error, req: Request, res: Response, next: NextFunction) => {
         throw (err);
