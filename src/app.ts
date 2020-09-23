@@ -2,6 +2,9 @@
 import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
+// @ts-ignore
+// import cors from 'cors';
+const  cors = require('cors');
 
 import config from "./config";
 
@@ -12,6 +15,7 @@ import shop from './controller/shop'
 
 const app = express();
 async function start() {
+    app.use(cors())
     app.use('/api/user', user);
     app.use('/api/layer', layer);
     app.use('/api/norm', norm);

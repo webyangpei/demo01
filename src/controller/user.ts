@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from 'express';
 import User from "../schemas/user";
 import { userInfo }  from 'user';
 
+
 const router = express.Router();
 
 // 获取用户列表
@@ -12,6 +13,29 @@ router.get('/list', (req:Request, res: Response, next: NextFunction) => {
     query.username = <string>req.query.username;
     User.find(query).then(data => {
         return res.json(data);
+    })
+});
+
+// 用户登录
+router.get('/login',(req:Request, res: Response, next: NextFunction) => {
+    const query: { username: string, password: string } = {
+        username: '',
+        password: ''
+    }
+    query.username = <string>req.query.username;
+    query.password = <string>req.query.password;
+    User.find(query).then(data => {
+        if(data && data.length) {
+            return res.json({code: 1,
+                error_msg: '登录成功',
+                data
+            });
+        } else {
+            return res.json({code: 2,
+                error_msg: '登录失败',
+                data
+            });
+        }
     })
 });
 
