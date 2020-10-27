@@ -39,8 +39,8 @@ router.post('/add', jsonParser, (req: Request, res: Response, next: NextFunction
             result: 1,
             error_msg: '操作成功',
             data
-        })
-    })
-})
+        });
+    });
+});
 
 export default router;

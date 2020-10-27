@@ -71,7 +71,7 @@ router.delete('/delete/:id', (req:Request, res: Response, next: NextFunction) =>
               code: 1,
               msg: '删除用户成功'
           })
-      };
+      }
   });
 });
 

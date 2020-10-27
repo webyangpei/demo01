@@ -12,7 +12,7 @@ router.get('/list', (req: Request, res: Response, next: NextFunction) => {
             error_msg: '查询成功',
             data
         });
-    })
+    });
 });
 
 export default router;

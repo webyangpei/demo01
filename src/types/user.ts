@@ -3,4 +3,4 @@ export interface userInfo {
     age: number,
     password: string,
     status?: number
-};
+}
