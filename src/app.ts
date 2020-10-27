@@ -3,7 +3,6 @@ import express from 'express';
 import { Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 // @ts-ignore
-// import cors from 'cors';
 const  cors = require('cors');
 
 import config from "./config";
@@ -24,7 +23,7 @@ async function start() {
     app.use('/', (err: Error, req: Request, res: Response, next: NextFunction) => {
         throw (err);
         res.sendStatus(500);
-    })
+    });
     // 链接mongoose
     mongoose.connect('mongodb://localhost/ts-node', { useNewUrlParser: true, useUnifiedTopology: true });
     const db = mongoose.connection;
