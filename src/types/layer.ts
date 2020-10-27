@@ -5,4 +5,4 @@ export interface layerInfo {
     norm: string, // 指标
     judgment: number, // 判断条件 枚举值
     judgmentValue: number // 判断条件的值
-};
+}
